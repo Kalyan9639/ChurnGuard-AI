@@ -1,5 +1,4 @@
 # Stage 1: Use an official Python runtime as a parent image
-# Using a slim version to keep the final image size smaller.
 FROM python:3.9-slim
 
 # Set the working directory in the container
@@ -12,17 +11,13 @@ COPY requirements.txt .
 # Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# --- FIX: Correctly copy the 'models' directory instead of the old one ---
-# This ensures that the model and scaler files are in the right place inside the container.
-COPY models/ ./models/
-COPY ai_model.py .
-
+# --- FIX: Copy all necessary application files into the WORKDIR ---
+# This ensures that ai_model.py and the models/ directory are in the same place.
+COPY . .
 
 # Expose the port the app will run on. Google Cloud Run expects port 8080 by default.
 EXPOSE 8080
 
 # Define the command to run your FastAPI application using Uvicorn
-# Uvicorn will listen on 0.0.0.0 to be accessible from outside the container.
-# The port is set to 8080 to match the EXPOSE instruction.
 CMD ["uvicorn", "ai_model:app", "--host", "0.0.0.0", "--port", "8080"]
 
