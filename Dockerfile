@@ -23,4 +23,3 @@ EXPOSE 8080
 # Uvicorn will listen on 0.0.0.0 to be accessible from outside the container.
 # The port is set to 8080 to match the EXPOSE instruction.
 CMD ["uvicorn", "ai_model:app", "--host", "0.0.0.0", "--port", "8080"]
-```
