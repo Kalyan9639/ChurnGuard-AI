@@ -1,3 +1,5 @@
+# This is the streamlit version of the index.html file that is present in the main branch
+
 import streamlit as st
 import pandas as pd
 import requests
@@ -281,4 +283,5 @@ else:
             <p style='color: #9ca3af;'>Your customer churn analysis will appear here. Fill in the details on the left to get started.</p>
         </div>
     """, unsafe_allow_html=True)
+
 
