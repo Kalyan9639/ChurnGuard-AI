@@ -190,3 +190,4 @@ async def predict_churn_from_file(file: UploadFile = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred during file processing: {str(e)}")
 
+
