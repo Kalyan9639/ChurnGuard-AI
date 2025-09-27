@@ -1,5 +1,0 @@
-fastapi
-joblib
-pandas
-uvicorn
-sklearn==1.4.1.post1
