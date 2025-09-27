@@ -54,7 +54,7 @@ Follow these instructions to set up and run the project locally.
 
 ### 1. Clone the Repository  
 ```bash
-git clone https://github.com/your-username/churnguard-ai.git
+git clone https://github.com/Kalyan9639/churnguard-ai.git
 cd churnguard-ai
 ```
 
