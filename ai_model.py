@@ -17,7 +17,7 @@ try:
     model = joblib.load(model_path)
     scaler = joblib.load(scaler_path)
 except FileNotFoundError as e:
-    raise RuntimeError(f"Model or scaler file not found. Please ensure '{os.path.basename(e.filename)}' is in the 'models' directory.") from e
+    raise RuntimeError(f"Model or scaler file not found.") from e
 
 # Define the feature names in the correct order
 FEATURE_NAMES = [
@@ -189,5 +189,6 @@ async def predict_churn_from_file(file: UploadFile = File(...)):
         return {"no_of_customers_to_churn": len(churn_ids), "customers_likely_to_churn": churn_ids}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred during file processing: {str(e)}")
+
 
 
