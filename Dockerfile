@@ -12,7 +12,8 @@ COPY requirements.txt .
 # Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy your application code and the models directory into the container
+# --- FIX: Correctly copy the 'models' directory instead of the old one ---
+# This ensures that the model and scaler files are in the right place inside the container.
 COPY models/ ./models/
 COPY ai_model.py .
 
@@ -24,3 +25,4 @@ EXPOSE 8080
 # Uvicorn will listen on 0.0.0.0 to be accessible from outside the container.
 # The port is set to 8080 to match the EXPOSE instruction.
 CMD ["uvicorn", "ai_model:app", "--host", "0.0.0.0", "--port", "8080"]
+
