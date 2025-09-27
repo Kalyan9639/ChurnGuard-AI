@@ -13,8 +13,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy your application code and the models directory into the container
-COPY ai_model.py .
 COPY models/ ./models/
+COPY ai_model.py .
+
 
 # Expose the port the app will run on. Google Cloud Run expects port 8080 by default.
 EXPOSE 8080
